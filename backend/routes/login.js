@@ -2,8 +2,8 @@ const router = require('express').Router()
 const User = require('../model/user')
 
 router.post('/',async (req, res) => {
-    const {email, password} = req.body;
-    User.findOne({email:email})
+    const {name, password} = req.body;
+    User.findOne({name:name})
     .then(user =>{
         if (user){
             if(user.password===password){
@@ -14,7 +14,7 @@ router.post('/',async (req, res) => {
             }
         }
         else{
-            res.json("No user with that email exists.");
+            res.json("No user with that name exists.");
         }
     })
 });

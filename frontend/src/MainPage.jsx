@@ -24,7 +24,6 @@ function MainPage() {
 
     return ( location.state ? 
         (<div id="mainPage">
-            {location.state.user.email}
             {location.state.user.userCount}
             {location.state.user.name}
             <h1 id="mainPage">mainpage</h1>

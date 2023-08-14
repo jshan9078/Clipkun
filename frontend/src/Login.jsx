@@ -5,19 +5,25 @@ import axios from 'axios'
 
 
 function Login() {
-    const [email, setEmail] = useState();
+    const [name, setName] = useState();
     const [password, setPassword] = useState();
     const navigate = useNavigate();
     const location = useLocation();  
 
     const handleSubmit = (e) => {
-      if (email.length>0 && password.length>0){
+      if (name.length>0 && password.length>0){
         e.preventDefault()
-        axios.post('http://localhost:5000/login', {email, password})
+        axios.post('http://localhost:5000/login', {name, password})
         .then(res => {
             console.log(res);
-            if (res.data!=="The password is incorrect." && res.data!=="No user with that email exists."){
-              navigate(location.state.path,{state:{user:res.data}});
+            if (res.data!=="The password is incorrect." && res.data!=="No user with that name exists."){
+              if(location.state){
+                navigate(location.state.path,{state:{user:res.data}});
+              }
+              else{
+                navigate(`/main`,{state:{user:res.data}});
+              }
+              
             }
             else{
               alert(res.data);
@@ -42,7 +48,7 @@ function Login() {
           <form >
             <div className="mb-3">
               <label id="signupLabel" htmlFor="email">
-                <strong>Email</strong>
+                <strong>Name</strong>
               </label>
               <input
                 id="field"
@@ -51,7 +57,7 @@ function Login() {
                 autoComplete="off"
                 name="email"
                 className="rounded-3"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="mb-3">

@@ -6,15 +6,14 @@ import axios from 'axios'
 
 function Signup() {
     const [name, setName] = useState()
-    const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        if (name.length>0 && email.length>0 && password.length>0 && confirmPassword.length>0 && password===confirmPassword){
+        if (name.length>0 && password.length>0 && confirmPassword.length>0 && password===confirmPassword){
             e.preventDefault()
-            axios.post('http://localhost:5000/register', {name, email, password})
+            axios.post('http://localhost:5000/register', {name, password})
             .then(res => {
                 console.log(res);
                 if(res.data==="Success"){
@@ -54,20 +53,6 @@ function Signup() {
                 name="email"
                 className="rounded-3"
                 onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label id="signupLabel" htmlFor="email">
-                <strong>Email</strong>
-              </label>
-              <input
-                id="field"
-                type="email"
-                placeholder="Enter Email"
-                autoComplete="off"
-                name="email"
-                className="rounded-3"
-                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-3">

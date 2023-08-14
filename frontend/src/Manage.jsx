@@ -20,7 +20,6 @@ function Manage() {
 
     return ( location.state ? 
         (<div id="managePage">
-            {location.state.user.email}
             {location.state.user.userCount}
             {location.state.user.name}
             <h1 id="managePage">Manage Page</h1>
