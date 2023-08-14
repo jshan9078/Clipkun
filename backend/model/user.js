@@ -8,6 +8,12 @@ const userSchema = new mongoose.Schema({
     },
     userCount:{
         type:Number,
+    },
+    clipCount:{
+        type:Number,
+    },
+    storage:{
+        type:Number,
     }
 });
 

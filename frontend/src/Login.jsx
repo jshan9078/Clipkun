@@ -53,7 +53,7 @@ function Login() {
               <input
                 id="field"
                 type="email"
-                placeholder="Enter Email"
+                placeholder="Enter Name"
                 autoComplete="off"
                 name="email"
                 className="rounded-3"

@@ -22,6 +22,8 @@ function Manage() {
         (<div id="managePage">
             {location.state.user.userCount}
             {location.state.user.name}
+            {location.state.user.clipCount}
+            {location.state.user.storage}
             <h1 id="managePage">Manage Page</h1>
         </div>) : <div></div>);
 

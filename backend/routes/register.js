@@ -8,13 +8,15 @@ router.post('/',async (req, res) => {
     const userCount=arr.length+1;
     const hash = await bcrypt.hash(password,13);
     password=hash;
+    const clipCount=0;
+    const storage=0;
     User.findOne({name:name})
     .then(user =>{
         if (user){
             res.json("A user with that name already exists.")
         }
         else{
-            User.create({name,password,userCount})
+            User.create({name,password,userCount,clipCount,storage})
             .then(res.json("Success"))
             .catch(err=>res.json(err));
         }
