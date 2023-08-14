@@ -1,11 +1,13 @@
 const router = require('express').Router()
 const User = require('../model/user')
+const bcrypt = require('bcrypt');
 
 router.post('/',async (req, res) => {
-    const {name, password} = req.body;
+    let {name, password} = req.body;
     const arr = await User.find({});
     const userCount=arr.length+1;
-
+    const hash = await bcrypt.hash(password,13);
+    password=hash;
     User.findOne({name:name})
     .then(user =>{
         if (user){
