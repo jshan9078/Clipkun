@@ -17,12 +17,23 @@ function Signup() {
             axios.post('http://localhost:5000/register', {name, email, password})
             .then(res => {
                 console.log(res);
-                navigate('/login')
+                if(res.data==="Success"){
+                  navigate('/login');
+                }
+                else{
+                  alert(res.data);
+                }
             }).catch(err => console.log(err))
         }
         else if (password!==confirmPassword){
             alert('The passwords do not match.');
         }
+    }
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        handleSubmit(e);
+      }
     }
 
     return (
@@ -84,6 +95,7 @@ function Signup() {
                 name="password"
                 className="rounded-3"
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                onKeyDown={handleKeyDown}
               />
             </div>
             

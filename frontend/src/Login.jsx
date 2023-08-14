@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
-import {useNavigate} from 'react-router-dom';
+import {BrowserRouter,Routes,Route,useNavigate} from 'react-router-dom';
 import axios from 'axios'
 
 
-function Login() {
+function Login(props) {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const navigate = useNavigate()
@@ -15,16 +15,23 @@ function Login() {
         axios.post('http://localhost:5000/login', {email, password})
         .then(res => {
             console.log(res);
-            if (res.data==="Success"){
-              navigate('/main');
+            if (res.data!=="The password is incorrect." && res.data!=="No user with that email exists."){
+              navigate('/main',{state:{user:res.data}});
             }
             else{
               alert(res.data);
             }
             
         }).catch(err => console.log(err))
+      }
     }
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        handleSubmit(e);
+      }
     }
+  
 
     return (
     <div id="signupPage">
@@ -57,6 +64,7 @@ function Login() {
                 name="password"
                 className="rounded-3"
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleKeyDown}
               />
             </div>
 

@@ -8,6 +8,9 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type:String,
+    },
+    userCount:{
+        type:Number,
     }
 });
 

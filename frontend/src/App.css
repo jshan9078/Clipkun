@@ -76,6 +76,13 @@
     color:white;
 }
 
+#disclaimer{
+    color:#955CB8;
+    margin-top:2vw;
+    font-size:1vw;
+    font-family:var(--font-epilogue);
+}
+
 #header{
     color:#955CB8;
     font-size:3vw;
@@ -155,6 +162,11 @@ input{
     color:white;
 }
 
+#mainPage{
+    color:white;
+}
+
+
 @media only screen and (max-width: 900px) {
     #mainName{
         margin-top:27vw;
@@ -185,6 +197,11 @@ input{
 
     #buttons{
         margin-top:15vw;
+    }
+
+    #disclaimer{
+        margin-top:5vw;
+        font-size:4vw;
     }
 
     #header{
