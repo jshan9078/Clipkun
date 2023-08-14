@@ -9,7 +9,7 @@ function Signup() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         if (name.length>0 && email.length>0 && password.length>0 && confirmPassword.length>0 && password===confirmPassword){
@@ -18,7 +18,7 @@ function Signup() {
             .then(res => {
                 console.log(res);
                 if(res.data==="Success"){
-                  navigate('/login');
+                  navigate('/login',{state:{path:`/main`}});
                 }
                 else{
                   alert(res.data);

@@ -1,13 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
-import {BrowserRouter,Routes,Route,useNavigate} from 'react-router-dom';
+import {BrowserRouter,Routes,Route,useNavigate,useLocation} from 'react-router-dom';
 import axios from 'axios'
 
 
-function Login(props) {
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const navigate = useNavigate()
+function Login() {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const navigate = useNavigate();
+    const location = useLocation();  
 
     const handleSubmit = (e) => {
       if (email.length>0 && password.length>0){
@@ -16,7 +17,7 @@ function Login(props) {
         .then(res => {
             console.log(res);
             if (res.data!=="The password is incorrect." && res.data!=="No user with that email exists."){
-              navigate('/main',{state:{user:res.data}});
+              navigate(location.state.path,{state:{user:res.data}});
             }
             else{
               alert(res.data);

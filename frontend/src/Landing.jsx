@@ -5,7 +5,7 @@ function Landing() {
     let navigate = useNavigate(); 
     const routeLogin = () =>{ 
         let path = `/login`; 
-        navigate(path);
+        navigate(path,{state:{path:`/main`}});
     }
 
     const routeSignup = () =>{ 
