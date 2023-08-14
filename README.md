@@ -6,6 +6,7 @@ The Anime Clipping Tool
 - Cloudinary SDK for managing clips
 - Mongoose for schemas
 - Multer for middleware
+- Bcrypt for storing passwords securely
 - Axios for making requests to the backend
 - Express + Node for server
 - React for frontend
