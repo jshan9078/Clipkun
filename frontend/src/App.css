@@ -166,6 +166,18 @@ input{
     color:white;
 }
 
+#storageinfo{
+    color:white;
+    font-size:2.5vw;
+    font-family:var(--font-epilogue);
+    text-align: center;
+    
+}
+
+#highlight2{
+    color:#5D9D76;
+}
+
 
 @media only screen and (max-width: 900px) {
     #mainName{

@@ -17,7 +17,11 @@ function MainPage() {
     }
 
     const handleSubmit = (e) => {
-        navigate(`/manage`,{state:{user:location.state.user}});
+      const name = location.state.user.name;
+      axios.post('http://localhost:5000/getuser',{name})
+      .then(res=> {
+        navigate(`/manage`,{state:{user:res.data}});
+      }).catch(err => console.log(err))
     }
 
     useEffect(()=>{
@@ -43,10 +47,6 @@ function MainPage() {
 
     return ( location.state ? 
         (<div id="mainPage">
-            {location.state.user.userCount}
-            {location.state.user.name}
-            {location.state.user.clipCount}
-            {location.state.user.storage}
             <h1 id="mainPage">mainpage</h1>
             <button id="confirmButton" onClick={handleSubmit}>Manage Clips</button>
             <input
