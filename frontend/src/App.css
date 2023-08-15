@@ -178,6 +178,97 @@ input{
     color:#5D9D76;
 }
 
+#container {
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+
+
+#video {
+    font-family:var(--font-fugaz);
+    background-color: #D9D9D9;
+    display:block;
+    width: 420px;
+    height: 450px;
+    margin: 1.5rem;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    cursor:pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+    margin-bottom:5vw;
+}
+
+#video:hover {
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05, 1.05);
+}
+
+#vidframe{
+    display:block;
+
+}
+#clipname{
+    background-color: #D9D9D9;
+    font-size:2vw;
+    color:#49265F;
+    text-align: center;
+    display:block;
+}
+
+#details{
+    background-color: #D9D9D9;
+    font-size:1.5vw;
+    text-transform: capitalize;
+    font-weight:700;
+    color:black;
+    font-family:var(--font-epilogue);
+    text-align: center;
+    display:block;
+    margin-top:1vw;
+}
+
+#cardButtons{
+    font-family:var(--font-epilogue);
+    background-color: #D9D9D9;
+}
+
+#copyLinkButton{
+    margin-left:2.7vw;
+    margin-top:1vw;
+    color:white;
+    width:40%;
+    border-radius: 1vw;
+    background-color: #49265F;
+    border:none;
+    margin-right:0.5vw;
+}
+
+#copyLinkButton:hover{
+    background-color: #955CB8;
+}
+
+#deleteButton{
+    color:black;
+    width:40%;
+    border-radius: 1vw;
+    background-color: #F47474;
+    border:none;
+    margin-left:0.5vw;
+}
+
+#deleteButton:hover{
+    background-color: #d84545;
+
+}
+
 
 @media only screen and (max-width: 900px) {
     #mainName{

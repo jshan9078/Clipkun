@@ -43,9 +43,15 @@ router.post('/',upload.single('video'),async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         let clip = await Clip.findById(req.params.id);
+        const user = await User.findOne({name:clip.owner});
+        const filter = {name:clip.owner};
+        const update = { clipCount: user.clipCount-1, storage: user.storage-clip.size}; 
+        const doc = await User.findOneAndUpdate(filter, update, {
+            new:true
+        });
         await cloudinary.uploader.destroy(clip.cloudinary_id,{resource_type: "video"}); //remove from storage
         await clip.deleteOne(); //remove from db
-        res.json(clip);
+        res.json(user);
     } catch (err){
         console.log(err);
     }
