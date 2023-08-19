@@ -23,6 +23,9 @@ const clipSchema = new mongoose.Schema({
     },
     size:{
         type:String,
+    },
+    playback:{
+        type:String,
     }
 });
 

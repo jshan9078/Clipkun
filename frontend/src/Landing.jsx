@@ -18,19 +18,14 @@ function Landing() {
     <div id="landingPage">
         <h1 id="mainName">Clip-kun</h1>
         <h2 id="slogan">The Anime Clipping Tool</h2>
-        <h2 id="featureOne"><strong>Create and download unlimited 30 second clips</strong></h2>
-        <hr id="line"></hr>
-        <h2 id="featureHeader"><strong>For the first 250 users...</strong></h2>
-        <h2 id="featureTwo">Manage <strong id="highlight">100 MB / 10 clips* </strong> online (shareable by links)</h2>
-        <h2 id="featureTwo"><strong>That's roughly...</strong></h2>
-        <h2 id="featureThree"><strong id="highlight">3000</strong> seconds of 360p</h2>
-        <h2 id="featureThree"><strong id="highlight">1400</strong>  seconds of 720p</h2>
-        <h2 id="featureThree"><strong id="highlight">1000</strong>  seconds of 1080p</h2>
+        <h2 id="featureOne"><strong>Create and download 60 second clips</strong></h2>
+        <h2 id="featureOne">Manage <strong id="highlight">15 clips* </strong> online </h2>
+        <h2 id="featureTwo">(shareable by links)</h2>
         <div id="buttons">
             <button id="signupButton"  onClick={routeSignup} >Sign Up</button>
             <button id="loginButton" onClick={routeLogin} >Login</button>
         </div>
-        <h2 id="disclaimer">*whichever comes first, clips can be deleted</h2>
+        <h2 id="disclaimer">*clips can be deleted</h2>
     </div>
   );
 }

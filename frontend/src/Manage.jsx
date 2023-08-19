@@ -42,7 +42,6 @@ function Manage() {
         (<div id="managePage">
             <h1 id="mainName">Clip-kun</h1>
             <h2 id="header">Manage Clips</h2>
-            <h2 id="storageinfo">Storage: <strong id="highlight2"> {(bytes/1000000).toFixed(1)} / 100 MB </strong> </h2>
             <h2 id="storageinfo">Clip Count: <strong id="highlight2">{clipCount} </strong> </h2>
             <div id="container">
             {

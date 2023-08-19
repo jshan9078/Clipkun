@@ -29,7 +29,11 @@ const VideoCard = ({video}) => {
             <h1>{video.episode} </h1>
             <h1>{video.size} </h1> */}
             <div id="clipname">{video.name} </div>
-            <div id="vidframe"><iframe width="420" height="250" src={video.url}> </iframe></div>
+            <div id="vidframe">
+                <video width="420" height="250" controls>
+                    <source src={video.url} type="video/mp4"/>
+                </video>
+            </div>
             <div id="details">{video.anime} Episode {video.episode} </div>
             <div id="cardButtons">
                 <button id="copyLinkButton" onClick={copyFunction}>Copy Link</button>

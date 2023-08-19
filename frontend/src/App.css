@@ -13,7 +13,7 @@
 
 #mainName{
     color:white;
-    margin-top:2vw;
+    margin-top:7vw;
     font-size:7vw;
     font-family:var(--font-fugaz);
     text-align: center;
@@ -147,7 +147,7 @@
     text-transform:uppercase;
     font-size:2.5vw;
     color:white;
-
+    padding-top:0.5vw;
     border-radius: 1vw;
     background-color: #265F3D;
     border:none;
@@ -163,13 +163,17 @@ input{
 }
 
 #mainPage{
+    margin-top:-5vw;
     color:white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family:var(--font-epilogue);
 }
 
 #storageinfo{
     color:white;
     font-size:2.5vw;
-    font-family:var(--font-epilogue);
     text-align: center;
     
 }
@@ -185,8 +189,96 @@ input{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-  }
+}
 
+#searchBarContainer{
+    font-family:var(--font-epilogue);
+    width:50%;
+    margin-left:25vw;
+    margin-top:3vw;
+    margin-bottom:1vw;
+    display:block;
+}
+
+#searchChoice{
+    background-color: transparent;
+}
+
+
+#selection{
+    color:#a8e7c0;
+    font-weight: 700;
+    font-size:1.5vw;
+    font-family:var(--font-fugaz);
+    margin-top:3vw;
+}
+
+#inputWrapper{
+    background-color:white;
+    border-radius:1vw;
+    height:2.5rem;
+    padding: 0 15px;
+    border:none;
+    color:black;
+    box-shadow:0px 0px 7px #ddd;
+}
+
+#resultsList{
+    
+    width:100%;
+    background-color:white;
+    border-radius:1vw;
+    margin-top:1rem;
+    max-height:300px;
+    overflow-y:scroll;
+}
+
+#searchResult{
+    padding:10px 20px;
+    background-color: white;
+    color:black;
+    cursor:pointer;
+}
+
+#searchResult:hover{
+    background-color: #efefef;
+}
+
+#time{
+    display:inline;
+    background-color: transparent;
+}
+
+#secondLabel{
+    margin-left:1vw;
+    margin-right:1vw;
+}
+
+#minuteLabel{
+    margin-right:1vw;
+}
+
+#formField{
+    color:#ba90d4;
+    margin-top:2vw;
+}
+
+#createButton{
+    margin-top:2vw;
+    width:19%;
+    text-transform:uppercase;
+    font-size:2.5vw;
+    color:black;
+    padding-top:0.5vw;
+    margin-bottom:2vw;
+    border-radius: 1vw;
+    background-color: #a8e7c0;
+    border:none;
+}
+
+#createButton:hover{
+    background-color: #5D9D76;
+}
 
 
 #video {
@@ -221,6 +313,16 @@ input{
     color:#49265F;
     text-align: center;
     display:block;
+}
+
+#clipNameField{
+    background-color:rgb(252, 252, 221);
+    border-radius:1vw;
+    height:2.5rem;
+    padding: 0 15px;
+    border:none;
+    color:black;
+    box-shadow:0px 0px 3px #ddd;
 }
 
 #details{
@@ -360,6 +462,44 @@ input{
         margin-left:25vw;
         margin-top:2vw;
         display:block;
+    }
+
+    #searchBarContainer{
+        margin-left:23vw;
+    }
+
+    #formField{
+        margin-top:3vw;
+    }
+
+    #selection{
+        font-size: 5vw;
+        margin-top:5vw;
+    }
+
+    #createButton{
+        width:50%;
+        font-size:9vw;
+        margin-top:3vw;
+        margin-bottom:7vw;
+    }
+
+    #secondLabel{
+        margin-left:3vw;
+        margin-right:2vw;
+    }
+
+    #minuteLabel{
+        margin-left:3vw;
+        margin-right:2vw;
+    }
+
+    #confirmButton{
+        font-size: 7.5vw;
+    }
+
+    #resultsList{
+        width:110%;
     }
 
 }
