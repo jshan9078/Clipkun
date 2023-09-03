@@ -8,15 +8,15 @@ router.post('/',upload.single('video'),async (req, res) => {
     try {
         const user = await User.findOne({name:req.body.owner});
         if (user.clipCount+1>15){
-            res.json("Clip limit exceeded.");
+            res.json("Clip limit exceeded. Please delete some clips in the manager to make space. Clips can be saved by download there as well.");
         }
         else{
             const file = req.body.url;
             const result = await cloudinary.uploader.upload(file, {resource_type: "video"});
             const url = result.secure_url;
             const urlarr = url.split('upload');
-            const endTime="389";
-            const startTime="383";
+            const endTime=req.body.endTime;
+            const startTime=req.body.startTime;
             const newurl = urlarr[0]+'upload/eo_'+ endTime + ',so_' + startTime + urlarr[1];
             const result2 = await cloudinary.uploader.upload(newurl, {resource_type: "video"});
             console.log(result2);

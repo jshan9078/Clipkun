@@ -8,14 +8,13 @@ function MainPage() {
     const [ready, setReady] = useState(false);
     const location = useLocation();  
     const navigate = useNavigate();
-    const  [file, setFile] = useState();
     const  [name, setName] = useState();
-    const  [anime, setAnime] = useState('bruh');
+    const  [anime, setAnime] = useState();
     const  [episode, setEpisode] = useState();
-    const [startMinute, setStartMinute] = useState(0);
-    const [startSecond, setStartSecond] = useState(0);
-    const [endMinute, setEndMinute] = useState(0);
-    const [endSecond, setEndSecond] = useState(0);
+    const [startMinute, setStartMinute] = useState();
+    const [startSecond, setStartSecond] = useState();
+    const [endMinute, setEndMinute] = useState();
+    const [endSecond, setEndSecond] = useState();
     const [epCount,setEpCount] = useState(1);
     const [searchResults,setSearchResults]=useState([]);
     const [searchQuery,setSearchQuery]=useState('');
@@ -40,26 +39,46 @@ function MainPage() {
         }
     },[])
 
-    const upload=(e)=>{
-      console.log('clicked');
+    const upload=async(e)=>{
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('url','https://na-99.files.nextcdn.org/get/99/01/3d6dc034038ebb6eb4e47f2c3390c4906ccdcee735c074ee203f0a558164a652?file=AnimePahe_Watashi_no_Shiawase_na_Kekkon_-_07_360p_Netflix.mp4&token=WDTR3cC5Z2aKuPXt9rZVPA&expires=1692275109');
-        const owner = location.state.user.name;
-        formData.append("name", name);
-        formData.append("anime", anime);
-        formData.append("episode", episode);
-        formData.append("owner", owner);
-        axios.post('http://localhost:5000/clip', formData)
-        .then(res=>{
-          console.log(res.data);
-          alert("Clip uploaded");
-        }).catch(err => console.log(err))
+        if (!(name && episode && anime && startMinute && startSecond && endSecond && endMinute)){
+          alert('Please fill out all the fields');
+        }
+        else {
+          const startTime = ((+startMinute)*60) + (+startSecond);
+          const endTime = ((+endMinute)*60) + (+endSecond);
+          if (endTime<=startTime || endTime-startTime > 60){
+            alert('Clip must be at least 1 and at most 60 seconds long.')
+          }
+          else{
+            const response = await fetch(`https://weebapi.onrender.com/get_episode/${anime.siteLink}/${episode}`);
+            const data = await response.json();
+            const optionsResponse = await fetch(`https://weebapi.onrender.com/get_download_options/${data.episodeLink}`);
+            const optionsData = await optionsResponse.json();
+            const paheLink = optionsData[0].url;
+            const downloadLinkData = await fetch(`https://weebapi.onrender.com/get_download_link/${paheLink}`);
+            const downloadLink = await downloadLinkData.json();
+            const formData = new FormData();
+            formData.append('url',downloadLink);
+            const owner = location.state.user.name;
+            formData.append("name", name);
+            formData.append("anime", anime.title);
+            formData.append("episode", episode);
+            formData.append("owner", owner);
+            formData.append("startTime",startTime);
+            formData.append("endTime",endTime);
+            axios.post('http://localhost:5000/clip', formData)
+            .then(res=>{
+              console.log(res.data);
+              alert("Clip uploaded");
+            }).catch(err => console.log(err))
+          }
+        }
     }
 
     const searchFunction = async(e) =>{
       try{
-        const response = await fetch(`https://weeb-api-7nrxlzoyjq-uc.a.run.app/get_search_results/${e}`);
+        const response = await fetch(`https://weebapi.onrender.com/get_search_results/${e}`);
         const data = await response.json();
         const results = data.filter(entry=>entry.type!=="Movie");
         setSearchResults(results);
@@ -76,7 +95,7 @@ function MainPage() {
 
     const handleSelection = async(value) =>{
       setSearchResults([]); //hides results
-      const response = await fetch(`https://weeb-api-7nrxlzoyjq-uc.a.run.app/get_full_data/${value.siteLink}`);
+      const response = await fetch(`https://weebapi.onrender.com/get_full_data/${value.siteLink}`);
       const data = await response.json();
       setAnime(data); //stores anime obj
       setSearchQuery(''); //resets search bar entry
@@ -141,7 +160,7 @@ function MainPage() {
                   name="number"
                   min="0"
                   max="120"
-                  onInput={(e) => setStartMinute(e)}
+                  onInput={(e) => setStartMinute(e.target.value)}
                   required
                 />
               </div>
@@ -155,7 +174,7 @@ function MainPage() {
                   name="number"
                   min="0"
                   max="59"
-                  onInput={(e) => setStartSecond(e)}
+                  onInput={(e) => setStartSecond(e.target.value)}
                   required
                 />
               </div>
@@ -172,7 +191,7 @@ function MainPage() {
                   name="number"
                   min="0"
                   max="120"
-                  onInput={(e) => setEndMinute(e)}
+                  onInput={(e) => setEndMinute(e.target.value)}
                   required
                 />
               </div>
@@ -186,7 +205,7 @@ function MainPage() {
                   name="number"
                   min="0"
                   max="59"
-                  onInput={(e) => setEndSecond(e)}
+                  onInput={(e) => setEndSecond(e.target.value)}
                   required
                 />
               </div>
