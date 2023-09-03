@@ -12,9 +12,16 @@ function Signup() {
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
+
+      let config = {
+        headers: {
+          header1: 'Access-Control-Allow-Origin',
+        }
+      }
+
         if (name.length>0 && password.length>0 && confirmPassword.length>0 && password===confirmPassword){
             e.preventDefault()
-            axios.post('https://clipkun-server.vercel.app/register', {name, password})
+            axios.post('https://clipkun-server.vercel.app/register', {name, password},config)
             .then(res => {
                 console.log(res);
                 if(res.data==="Success"){
