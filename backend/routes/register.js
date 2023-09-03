@@ -4,23 +4,9 @@ const bcrypt = require('bcrypt');
 const cors=require('cors');
 
 
-router.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type,Origin,Accept');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-
-    if (req.method === "OPTIONS") {
-        res.header('Access-Control-Allow-Origin', req.headers.origin);
-        return res.status(200).end();
-      } else {
-        res.header('Access-Control-Allow-Origin', '*');
-      }
-
-    next();
-});
 
 router.post('/',async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     let {name, password} = req.body;
     const arr = await User.find({});
     const userCount=arr.length+1;

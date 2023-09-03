@@ -5,7 +5,7 @@ import axios from 'axios'
 
 
 function Signup() {
-    axios.defaults.withCredentials = true;
+    //axios.defaults.withCredentials = true;
     const [name, setName] = useState()
     const [password, setPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
@@ -13,15 +13,11 @@ function Signup() {
 
     const handleSubmit = (e) => {
 
-      let config = {
-        headers: {
-          header1: 'Access-Control-Allow-Origin',
-        }
-      }
+      
 
         if (name.length>0 && password.length>0 && confirmPassword.length>0 && password===confirmPassword){
             e.preventDefault()
-            axios.post('https://clipkun-server.vercel.app/register', {name, password},config)
+            axios.post('https://clipkun-server.vercel.app/register', {name, password})
             .then(res => {
                 console.log(res);
                 if(res.data==="Success"){
