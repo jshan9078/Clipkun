@@ -2,13 +2,6 @@ const router = require('express').Router()
 const User = require('../model/user')
 const bcrypt = require('bcrypt');
 
-router.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-
-  
 router.post('/',async (req, res) => {
     let {name, password} = req.body;
     const arr = await User.find({});
@@ -29,6 +22,7 @@ router.post('/',async (req, res) => {
         }
     })
 });
+
 
 
 module.exports = router;
