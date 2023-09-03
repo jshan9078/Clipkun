@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require('path');
 const dotenv = require('dotenv');
-const cors=require('cors');
 dotenv.config({path:'../.env'});
 
 //connect to mongoDB
@@ -15,14 +14,7 @@ mongoose.connect(process.env.MONGO_URI, {})
     console.log(err);
 });
 
-//middleware
-app.use(cors(
-    {
-        origin: ["https://clipkun.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-));
+
 
 app.use(express.json());
 
