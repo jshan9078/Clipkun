@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const cors=require('cors');
 
 router.use(cors({
-    origin: "https://clipkun.vercel.app"
+    origin: "https://clipkun.vercel.app/signup"
 
 }));
 
