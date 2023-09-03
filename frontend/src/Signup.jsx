@@ -5,7 +5,7 @@ import axios from 'axios'
 
 
 function Signup() {
-    // axios.defaults.withCredentials = true;
+    axios.defaults.withCredentials = true;
     const [name, setName] = useState()
     const [password, setPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
