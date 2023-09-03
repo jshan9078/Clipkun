@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const cors=require('cors');
 
 
-router.use(cors());
 
 router.post('/',async (req, res,next) => {
     res.append("Access-Control-Allow-Origin", ["*"]);
