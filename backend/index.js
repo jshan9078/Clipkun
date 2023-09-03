@@ -19,7 +19,6 @@ mongoose.connect(process.env.MONGO_URI, {})
 
 
 const setHeaders = function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Credentials', true)
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
     res.setHeader(
