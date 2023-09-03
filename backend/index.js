@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGO_URI, {})
 
 app.use(function(req, res, next) {
     var oneof = false;
+    console.log(req.headers);
     if(req.headers.origin) {
         res.header('Access-Control-Allow-Origin', req.headers.origin);
         oneof = true;
