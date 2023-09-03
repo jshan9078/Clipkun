@@ -3,10 +3,6 @@ const User = require('../model/user')
 const bcrypt = require('bcrypt');
 const cors=require('cors');
 
-router.use(cors({
-    origin: "https://clipkun.vercel.app/signup"
-
-}));
 
 
 router.post('/',async (req, res) => {
