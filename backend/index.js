@@ -23,6 +23,13 @@ app.use(cors(
         credentials: true
     }
 ));
+
+const setHeaders = function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'https://clipkun.vercel.app');
+    next();
+}
+
+app.use(setHeaders)
 app.use(express.json());
 
 
