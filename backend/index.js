@@ -15,24 +15,16 @@ mongoose.connect(process.env.MONGO_URI, {})
     console.log(err);
 });
 
-var allowedOrigins = ['https://clipkun.vercel.app'];
-app.use(cors({
-  origin: function(origin, callback){
-    // allow requests with no origin 
-    // (like mobile apps or curl requests)
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
-      var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}));
-
 //middleware
+app.use(cors(
+    {
+        origin: ["https://clipkun.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
+
 app.use(express.json());
-app.use(cors());
 
 app.use('/getuser',require('./routes/getuser'))
 app.use('/getuser',require('./routes/getuser'))
