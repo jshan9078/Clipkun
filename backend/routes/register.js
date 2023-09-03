@@ -4,13 +4,13 @@ const bcrypt = require('bcrypt');
 const cors=require('cors');
 
 
-router.use(cors(
-    {
-        origin: ["https://clipkun.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-));
+router.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'https://clipkun.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 router.post('/',async (req, res) => {
     let {name, password} = req.body;
