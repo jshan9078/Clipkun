@@ -1,6 +1,13 @@
 const router = require('express').Router()
 const User = require('../model/user')
 const bcrypt = require('bcrypt');
+const cors=require('cors');
+
+router.use(cors({
+    origin: "https://clipkun.vercel.app"
+
+}));
+
 
 router.post('/',async (req, res) => {
     let {name, password} = req.body;
