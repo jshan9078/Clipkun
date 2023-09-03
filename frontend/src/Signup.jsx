@@ -13,7 +13,7 @@ function Signup() {
     const handleSubmit = (e) => {
         if (name.length>0 && password.length>0 && confirmPassword.length>0 && password===confirmPassword){
             e.preventDefault()
-            axios.post('http://localhost:5000/register', {name, password})
+            axios.post('https://clipkun-server.vercel.app/register', {name, password})
             .then(res => {
                 console.log(res);
                 if(res.data==="Success"){

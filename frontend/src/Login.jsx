@@ -13,7 +13,7 @@ function Login() {
     const handleSubmit = (e) => {
       if (name.length>0 && password.length>0){
         e.preventDefault()
-        axios.post('http://localhost:5000/login', {name, password})
+        axios.post('https://clipkun-server.vercel.app/login', {name, password})
         .then(res => {
             console.log(res);
             if (res.data!=="The password is incorrect." && res.data!=="No user with that name exists."){

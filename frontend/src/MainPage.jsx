@@ -27,7 +27,7 @@ function MainPage() {
 
     const handleSubmit = (e) => {
       const name = location.state.user.name;
-      axios.post('http://localhost:5000/getuser',{name})
+      axios.post('https://clipkun-server.vercel.app/getuser',{name})
       .then(res=> {
         navigate(`/manage`,{state:{user:res.data}});
       }).catch(err => console.log(err))
@@ -67,7 +67,7 @@ function MainPage() {
             formData.append("owner", owner);
             formData.append("startTime",startTime);
             formData.append("endTime",endTime);
-            axios.post('http://localhost:5000/clip', formData)
+            axios.post('https://clipkun-server.vercel.app/clip', formData)
             .then(res=>{
               console.log(res.data);
               alert("Clip uploaded");

@@ -23,12 +23,12 @@ function Manage() {
         }
         else{
             const name = location.state.user.name;
-            axios.post('http://localhost:5000/getuser',{name})
+            axios.post('https://clipkun-server.vercel.app/getuser',{name})
             .then(res=> {
                 setBytes(res.data.storage);
                 setClipCount(res.data.clipCount);
                 const owner=res.data.name;
-                axios.post('http://localhost:5000/getclips', {owner})
+                axios.post('https://clipkun-server.vercel.app/getclips', {owner})
                 .then(res => {
                     console.log(res.data);
                     setClips(res.data);
