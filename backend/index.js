@@ -17,9 +17,10 @@ mongoose.connect(process.env.MONGO_URI, {})
 
 //middleware
 
-app.options("*", cors({ origin: 'https://clipkun.vercel.app', optionsSuccessStatus: 200 }));
+app.use(cors());
+app.options('*', cors());
 
-app.use(cors({ origin: "https://clipkun.vercel.app", optionsSuccessStatus: 200 }));
+
 
 
 
