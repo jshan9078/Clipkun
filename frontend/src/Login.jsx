@@ -9,6 +9,7 @@ function Login() {
     const [password, setPassword] = useState();
     const navigate = useNavigate();
     const location = useLocation();  
+    axios.defaults.withCredentials = true;
 
     const handleSubmit = (e) => {
       if (name.length>0 && password.length>0){

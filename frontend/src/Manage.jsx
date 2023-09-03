@@ -10,6 +10,7 @@ function Manage() {
     const [bytes, setBytes] = useState(location.state.user.storage);
     const [clipCount, setClipCount] = useState(location.state.user.clipCount);
     const [clips, setClips] = useState([]);
+    axios.defaults.withCredentials = true;
 
 
     const routeLogin = () =>{ 

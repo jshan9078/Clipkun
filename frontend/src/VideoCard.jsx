@@ -4,6 +4,7 @@ import axios from 'axios'
 
 
 const VideoCard = ({video}) => {
+    axios.defaults.withCredentials = true;
     const [deleteChoice,setDeleteChoice] = useState(false);
     const navigate = useNavigate();
     // const [src, setSrc] = useState(`https://player.cloudinary.com/embed/?public_id=muv18ddruygauostqlqk&cloud_name=dgdl0s9aq`)

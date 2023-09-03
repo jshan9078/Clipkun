@@ -5,6 +5,7 @@ import SearchResultsList from "./SearchResultsList";
 
 
 function MainPage() {
+    axios.defaults.withCredentials = true;
     const [ready, setReady] = useState(false);
     const location = useLocation();  
     const navigate = useNavigate();

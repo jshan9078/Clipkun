@@ -16,8 +16,15 @@ mongoose.connect(process.env.MONGO_URI, {})
 });
 
 //middleware
+app.use(cors(
+    {
+        origin: ["https://clipkun.vercel.app"],
+        methods: ["POST"],
+        credentials: true
+    }
+));
 app.use(express.json());
-app.use(cors());
+
 
 app.use('/getuser',require('./routes/getuser'))
 app.use('/getuser',require('./routes/getuser'))
