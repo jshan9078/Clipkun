@@ -6,8 +6,11 @@ const cors=require('cors');
 
 router.use(cors());
 
-router.post('/',async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+router.post('/',async (req, res,next) => {
+    res.append("Access-Control-Allow-Origin", ["*"]);
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
+    next();
     let {name, password} = req.body;
     const arr = await User.find({});
     const userCount=arr.length+1;
