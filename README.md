@@ -13,7 +13,7 @@ The Anime Clipping Tool
 - Javascript
 
 ## Usage
-- Website is currently not hosted due to cost of maintaining, but images are provided before.
+- Website is currently not hosted due to cost of maintaining, but images are provided below.
 
 *Landing Page*
 ![Landing Page](https://cdn.discordapp.com/attachments/928022919337103393/1150156204472021154/image.png)
